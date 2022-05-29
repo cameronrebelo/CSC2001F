@@ -1,0 +1,60 @@
+//Cameron Rebelo
+//RBLCAM001
+//22-04-2021
+/**
+class to create student object with name and student number attributes
+*/
+
+class Student implements Comparable<Student>
+{
+    private String name;
+    private String studentNumber;
+    
+    /**
+    constructor for student object
+    @param String n - name and surname of student
+    @param String s - student number of student
+    */
+    public Student(String n, String s)
+    {
+        this.name = n;
+        this.studentNumber = s;
+    }
+    /**
+    accessor for name of a student object
+    @return name of studetn as a string
+    */
+    public String getName()
+    {
+        return this.name;
+    }
+    /**
+    accessor for student number of a student object
+    @return student number as a string
+    */    
+    public String getStudentNumber()
+    {
+        return this.studentNumber;
+    }
+    
+    /**
+    toString method of student object
+    @return details of student
+    */
+    public String toString()
+    {
+        return name + " " + studentNumber;
+    }
+    /**
+    compareTo method of student class to compare student numbers
+    @return int value indicating differnace in student numbers
+    */
+    public int compareTo(Student other)
+    {
+     return this.studentNumber.compareTo(other.getStudentNumber());   
+    }
+
+
+    
+
+}

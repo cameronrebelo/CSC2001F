@@ -1,0 +1,41 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+/**
+Student array is used to populate the array data structure with the data from oklist.txt. Also includes a method to access the whole array to manipulated elsewhere.
+*/
+public class StudentArray
+{
+        private Student[] s = new Student[5000];
+        private int size=0;
+        public StudentArray()
+        {
+        
+                try
+                {
+                        Scanner file = new Scanner(new File("/home/cameron/Assignment1/data/oklist.txt"));
+                        while(file.hasNext())
+                        {
+                                String line = file.nextLine();
+                                Scanner scLine = new Scanner(line);
+                                String studentNumber = scLine.next();
+                                String fName = scLine.next();
+                                String lName = scLine.next();
+                                String name = fName+" " + lName;
+                                s[size]=new Student(studentNumber, name);
+                                size++;
+                                scLine.close();
+                        }       
+                        file.close();
+                }
+                catch(FileNotFoundException Fe)
+                {
+                        System.out.println("Error \n"+Fe);
+                }
+        }
+        
+        public Student[] getArray()
+        {
+                return s;
+        }
+}

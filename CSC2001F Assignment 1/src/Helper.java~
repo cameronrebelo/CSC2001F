@@ -1,0 +1,63 @@
+/**
+Helper class designed to create encapsulation for functions performed on the student array and BST. Methods here are used by other classes to perform functions on the data stored in the array and BST.
+*/
+public class Helper
+{
+    private StudentArray sArray = new StudentArray();
+    private BinarySearchTree<Student> sBST = (new StudentBinarySearchTree()).getBST();
+    public Helper()
+    {
+    }
+    
+    public String printStudent(String studentNumber)
+    {
+        Student[] studentSearch = sArray.getArray();
+        int opCount=0;
+        for (int i=0; i<studentSearch.length; i++)
+        {
+            opCount++;
+            if(studentNumber.compareTo(studentSearch[i].getStudentNumber())==0)
+            {
+                System.out.println(opCount+" comparisons");
+                return studentSearch[opCount].getName();
+            }
+        }
+        System.out.println(opCount+" comparisons");
+        return "Access denied!";
+    }
+    
+    public String printAllStudents()
+    {
+        String print ="";
+        Student [] printArray = sArray.getArray();
+        for(int i=0;i<(printArray.length);i++)
+        {
+            print+=(printArray[i].toString())+"\n";
+        }
+        return print;
+    }
+    
+    public String printStudentBST(String studentNumber)
+    {
+        try
+        {
+            if((sBST.find(new Student(studentNumber, null)))!=null)
+            {
+                return (sBST.find(new Student(studentNumber, null))).data.getName();            
+            }
+            else
+            {
+                return "Access denied!";
+            }
+        }
+        catch(NullPointerException Ne)
+        {
+            return "Access denied!";
+        }
+    }
+    
+    public void printAllStudentsBST()
+    {
+        sBST.inOrder();    
+    }    
+}

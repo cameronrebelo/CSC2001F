@@ -1,0 +1,32 @@
+class Student implements Comparable<Student>
+{
+    private String studentNumber;
+    private String name;
+    
+    public Student(String s, String n)
+    {
+        this.studentNumber=s;
+        this.name=n;
+    }
+    
+    public String getStudentNumber()
+    {
+        return this.studentNumber;
+    }
+    
+    public String getName()
+    {
+        return this.name;
+    }
+    
+    public String toString()
+    {
+        return name + " " + studentNumber;    
+    }
+    
+    public int compareTo(Student other)
+    {
+     return this.studentNumber.compareTo(other.getStudentNumber());   
+    }
+
+}
